@@ -14,14 +14,14 @@ notequal:
 while:
 	inc		r8
 	mov		al , BYTE[rdi + r8]
-	mov		bl , BYTE[rsi + r8]
-	cmp		al, bl
+	mov		cl , BYTE[rsi + r8]
+	cmp		al, cl
 	jne		notequal
 	cmp		al, 0
 	je		retzero
-	cmp		bl, 0
+	cmp		cl, 0
 	je		retzero
-	cmp		al, bl
+	cmp		al, cl
 	je		while
 
 	jmp		notequal
