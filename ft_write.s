@@ -1,6 +1,8 @@
 		global	_ft_write
+		extern	___error
 		section	.text
 _ft_write:			;write(rdi, rsi, rdx)
+	push	rax
 	push	rdi
 	push	rsi
 	push	rdx
@@ -12,11 +14,17 @@ _ft_write:			;write(rdi, rsi, rdx)
 	pop		rsi
 	pop		rdx
 	mov		rax, r8
+	pop		rdi
 	ret
 
 error:
+	push	rax
+	call	___error
+	pop		rdi
+	mov		[rax], rdi
 	pop		rdi
 	pop		rsi
 	pop		rdx
+	pop		rax
 	mov		rax, -1
 	ret
